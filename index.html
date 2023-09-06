@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>iChatApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcjcukVAZ1kvuGws4VDLdiLV2b9VMtVm9vKA&usqp=CAU">
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="title">
+                <img src="https://img.lovepik.com/element/45007/0578.png_860.png" width="35px">
+                <h1>iChatApp</h1>
+                <button type="button" onclick="show_hide()">
+                    <img class="ham" src="icon/icons8-hamburger-64.png" width="50px">
+                </button>
+            </div>
+        </header>
+        <div class="container">
+
+            <div class="users-window">
+                <div class="user-head">
+                    <h3>People</h3>
+                    <h4 class="users-count">0</h4>
+
+                </div>
+                <hr>
+                <div class="users-list">
+
+                </div>
+            </div>
+            <div class="chat-window">
+                <div class=day>Wednesday</div>
+
+                <div class="chat">
+                </div>
+                <div class="user-input">
+                    <input id="user-msg" type="text" placeholder="Type your message...">
+                    <button type="submit" id="user-send">SEND</button>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+
+        const uwindow = document.querySelector('.users-window')
+        function show_hide() {
+            if (uwindow.style.display == "block") {
+                uwindow.style.display = "none";
+            } else {
+                uwindow.style.display = "block"
+            }
+        }
+        const getCurrentDay = () => {
+            let weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            let currentTime = new Date();
+            days = weekday[currentTime.getDay()];
+            let day = document.getElementById('day');
+            // {{!-- return day; --}}
+            // return day;
+            day.innerText = days;
+        };
+        getCurrentDay();
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+</body>
+
+</html>
